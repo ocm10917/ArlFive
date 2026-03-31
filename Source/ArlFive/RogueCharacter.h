@@ -12,6 +12,7 @@ struct FInputActionValue;
 class UInputAction;
 class USpringArmComponent;
 class UCameraComponent;
+class UAnimMontage;
 
 UCLASS()
 class ARLFIVE_API ARogueCharacter : public ACharacter
@@ -29,6 +30,9 @@ protected:
 	
 	UPROPERTY(VisibleAnywhere, Category="PrimaryAttack")
 	FName MuzzleSocketName;
+	
+	UPROPERTY(EditDefaultsOnly, Category="PrimaryAttack")
+	TObjectPtr<UAnimMontage> AttackMontage;
 	
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	TObjectPtr<UInputAction> Input_Move;
@@ -54,6 +58,7 @@ protected:
 	
 	void PrimaryAttack();
 	
+	void AttackTimerElapsed();
 
 public:	
 	// Called every frame
