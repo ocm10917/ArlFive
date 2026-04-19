@@ -11,6 +11,10 @@ UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class ARLFIVE_API URogueInteractionComponent : public UActorComponent
 {
 	GENERATED_BODY()
+	
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Interaction")
+	float InteractionRadius = 800;
 
 public:
 	// Sets default values for this component's properties
