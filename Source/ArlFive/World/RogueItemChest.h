@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Core/RogueInteractionInterface.h"
 #include "GameFramework/Actor.h"
 #include "RogueItemChest.generated.h"
 
 class UStaticMeshComponent;
 
 UCLASS()
-class ARLFIVE_API ARogueItemChest : public AActor
+class ARLFIVE_API ARogueItemChest : public AActor, public IRogueInteractionInterface
 {
 	GENERATED_BODY()
 
@@ -29,10 +30,10 @@ protected:
 	float AnimationTargetPitch = 120.0f;
 	
 	float CurrenntAnimationPitch = 0.0f;
-	
-	virtual void BeginPlay() override;
 
 public:
+	
+	virtual void Interact() override;
 	
 	virtual void Tick(float DeltaTime) override;
 	
