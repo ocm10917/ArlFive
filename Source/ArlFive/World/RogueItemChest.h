@@ -30,7 +30,10 @@ protected:
 	float AnimationTargetPitch = 120.0f;
 	
 	float CurrenntAnimationPitch = 0.0f;
-
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void ChstAnimationComplete();
+	
 public:
 	
 	virtual void Interact() override;
