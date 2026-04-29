@@ -32,11 +32,11 @@ protected:
 	float CurrenntAnimationPitch = 0.0f;
 	
 	UFUNCTION(BlueprintImplementableEvent)
-	void ChstAnimationComplete();
+	void ChestAnimationComplete();
 	
 public:
 	
-	virtual void Interact() override;
+	virtual void Interact_Implementation() override;
 	
 	virtual void Tick(float DeltaTime) override;
 	
