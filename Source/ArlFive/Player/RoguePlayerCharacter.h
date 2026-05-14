@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "RoguePlayerCharacter.generated.h"
 
+class URogueActionSystemComponent;
 class ARogueProjectile;
 class UNiagaraSystem;
 class ARogueProjectileMagic;
@@ -72,6 +73,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category="Components")
 	TObjectPtr<USpringArmComponent> SpringArmComponent;
 	
+	UPROPERTY(VisibleAnywhere, Category="Components")
+	TObjectPtr<URogueActionSystemComponent> ActionSystemComponent;
+	
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -83,7 +88,10 @@ protected:
 
 	void AttackTimerElapsed(TSubclassOf<ARogueProjectile> ProjectileClass);
 
-public:	
+public:
+	
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
