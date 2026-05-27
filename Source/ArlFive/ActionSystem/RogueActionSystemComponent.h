@@ -11,11 +11,15 @@ struct FRogueAttributeSet
 {
 	GENERATED_BODY()
 	
-	FRogueAttributeSet()
-		: Health(100.0f) {}
+	FRogueAttributeSet() : 
+	Health(100.0f), 
+	HealthMax(100.0f) {}
 	
 	UPROPERTY(BlueprintReadOnly)
 	float Health;
+	
+	UPROPERTY(BlueprintReadOnly)
+	float HealthMax;
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthChanged, float, NewHealth, float, OldHealth);
@@ -30,6 +34,8 @@ public:
 	
 	void ApplyHealthChange(float InvalueChange);
 	
+	bool IsFullHealth() const;
+
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChanged OnHealthChanged;
 	
